@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget
 {
+  String email;
+  HomePage({
+  @required email,
+  });
   @override
   Widget build(BuildContext context) {
    return Scaffold(

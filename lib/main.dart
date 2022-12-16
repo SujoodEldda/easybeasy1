@@ -1,6 +1,6 @@
-import 'package:easybeasy/home_page.dart';
+import 'package:easybeasy/modules/home/home_page.dart';
 import 'package:flutter/material.dart';
-import 'login_screen.dart';
+import 'modules/login/login_screen.dart';
 
 void main() {
   runApp(MyApp());
