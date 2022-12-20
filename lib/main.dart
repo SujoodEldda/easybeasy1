@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'modules/admin/admin_page.dart';
 
 import 'modules/login/login_screen.dart';
+import 'modules/scanning/scan.dart';
+import 'modules/show_product/show_product.dart';
 import 'mongodb.dart';
 
 // final FirebaseApp app = FirebaseApp();
@@ -19,7 +21,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home:LoginScreen(),
+      home:DetailsScreen(),
     );
   }
 }

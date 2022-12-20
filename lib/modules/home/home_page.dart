@@ -1,12 +1,24 @@
 import 'package:easybeasy/modules/home/side_menu.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 
-class HomePage extends StatelessWidget
+import '../show_product/show_product.dart';
+
+class HomePage extends StatefulWidget
 {
   final String email;
   HomePage({
   @required this.email,
   });
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  var getResult = 'QR Code Result';
 
   @override
   Widget build(BuildContext context) {
@@ -42,17 +54,36 @@ class HomePage extends StatelessWidget
                ),
                child: Row(
                  children: [
+                   IconButton(
+                     onPressed: () {
+                       scanQRCode();
+                       print('hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh'+getResult);
+                       // Navigator.push(
+                       //   context,
+                       //   MaterialPageRoute(
+                       //     builder: (context) => ShowProduct(
+                       //       id:getResult,
+                       //     ),
+                       //   ),
+                       // );
+                     },
+                     icon: Icon(
+                       Icons.qr_code_2,
+                     ),
+                   ),
+                   // Text(getResult),
+                   SizedBox(
+                     width: 3.0,
+                   ),
                    Icon(
                      Icons.search,
                    ),
-                   SizedBox(
-                     width: 15.0,
-                   ),
                    Text(
-                     'Hi ${email}, what to search for you',
+                     'Hi ${widget.email}, what to search for you',
 
                    ),
                  ],
+
                ),
              ),
              SizedBox(
@@ -316,11 +347,6 @@ class HomePage extends StatelessWidget
   }
 
   // 1. build item
-  // 2. build list
-  // 3. add item to list
-
-
-  // arrow function
   Widget buildChatItem() =>
       Row(
         children: [
@@ -357,4 +383,20 @@ class HomePage extends StatelessWidget
         ],
       );
 
+  void scanQRCode() async {
+    try{
+      final qrCode = await FlutterBarcodeScanner.scanBarcode('#ff6666', 'Cancel', true, ScanMode.QR);
+
+      if (!mounted) return;
+
+      setState(() {
+        getResult = qrCode;
+      });
+      print("QRCode_Result:--");
+      print(qrCode);
+    } on PlatformException {
+      getResult = 'Failed to scan QR Code.';
+    }
+
+  }
 }
