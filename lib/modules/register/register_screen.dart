@@ -1,8 +1,11 @@
+import 'package:easybeasy/models/user/MongoDBModelUser.dart';
+import 'package:easybeasy/mongodb.dart';
 import 'package:flutter/material.dart';
 
+import '../../models/product/MongoDBModelProduct.dart';
 import '../../shared/components/components.dart';
 import '../home/home_page.dart';
-
+import 'package:mongo_dart/mongo_dart.dart' as M;
 class RegisterScreen extends StatefulWidget{
   @override
   State<RegisterScreen> createState() => _RegisterScreenState();
@@ -206,13 +209,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       print(firstname.text);
                       print(id.text);
                       print(phone.text);
+                      _insertData(id.text,email.text,firstname.text,lastname.text,password.text,phone.text);
                       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                           content: Text(
                               'successfully created !'
                           )
                       )
                       );
-
                     }
 
                   },
@@ -223,5 +226,31 @@ class _RegisterScreenState extends State<RegisterScreen> {
         ),
       ),
     );
+  }
+  void _clearAll(){
+
+  firstname.text = "";
+  email.text = "";
+  lastname.text = "";
+  password.text = "";
+  phone.text = "";
+  id.text = "";
+  passwordvar.text = "";
+
+  }
+  Future<void> _insertData(String id, String username,String firstname,String lastname,
+      String password,String phone) async{
+    var _id = M.ObjectId;
+    final data = MongoDbModelUser(
+      id: id,
+      username: username,
+      firstname: firstname,
+      lastname: lastname,
+      password: password,
+      phone: phone,
+
+    );
+    var result = await MongoDatabase.insert1(data);
+    _clearAll();
   }
 }
