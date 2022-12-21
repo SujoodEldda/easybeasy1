@@ -1,7 +1,9 @@
 import 'package:easybeasy/modules/home/home_page.dart';
+import 'package:easybeasy/modules/login/screen_arguments.dart';
 import 'package:easybeasy/shared/components/components.dart';
 import 'package:flutter/material.dart';
-
+import '../../shared/components/constants.dart';
+import '../../shared/components/default_button.dart';
 import '../register/register_screen.dart';
 
 // reusable components
@@ -13,7 +15,7 @@ import '../register/register_screen.dart';
 
 class LoginScreen extends StatefulWidget
 {
-
+  static String routeName = "/login";
   @override
   _LoginScreenState createState() => _LoginScreenState();
 }
@@ -31,7 +33,7 @@ class _LoginScreenState extends State<LoginScreen>
   {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.redAccent,
+        backgroundColor: kPrimaryColor,
       ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
@@ -100,23 +102,31 @@ class _LoginScreenState extends State<LoginScreen>
                   SizedBox(
                     height: 20.0,
                   ),
-                  defaultButton(
-                    text: 'login',
-                    function: ()
-                    {
-                      if(formKey.currentState.validate())
-                      {
-                        print(emailController.text);
-                        print(passwordController.text);
-                      }
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => HomePage(
-                            email:emailController.text,
-                          ),
-                        ),
-                      );
+                  // defaultButton(
+                  //   text: 'login',
+                  //   function: ()
+                  //   {
+                  //     if(formKey.currentState.validate())
+                  //     {
+                  //       print(emailController.text);
+                  //       print(passwordController.text);
+                  //     }
+                  //     Navigator.push(
+                  //       context,
+                  //       MaterialPageRoute(
+                  //         builder: (context) => HomePage(
+                  //           email:emailController.text,
+                  //         ),
+                  //       ),
+                  //     );
+                  //   },
+                  // ),
+                  DefaultButton(
+                    text: "Login",
+                    press: () {
+                      Navigator.pushNamed(context, HomePage.routeName,
+                      arguments: ScreenArguments(
+                      emailController.text));
                     },
                   ),
                   SizedBox(
@@ -131,17 +141,12 @@ class _LoginScreenState extends State<LoginScreen>
                       ),
                       TextButton(
                         onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => RegisterScreen(),
-                            ),
-                          );
+                          Navigator.pushNamed(context, RegisterScreen.routeName);
                         },
                         child: Text(
                           'Register Now',
                           style: TextStyle(
-                            color: Colors.redAccent
+                            color: kPrimaryColor
                           ),
                         ),
                       ),
@@ -155,18 +160,15 @@ class _LoginScreenState extends State<LoginScreen>
                     children: [
 
                       TextButton(
-                        onPressed: () {Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => HomePage(
-                              email:"guest",
-                            ),
-                          ),
-                        );},
+                        onPressed: () {
+                          Navigator.pushNamed(context, HomePage.routeName,arguments: ScreenArguments(
+                          emailController.text,
+                          ),);
+                        },
                         child: Text(
                           'Enter without identification',
                           style: TextStyle(
-                              color: Colors.redAccent
+                              color: kPrimaryColor
                           ),
                         ),
                       ),

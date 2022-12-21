@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:easybeasy/shared/styles/colors.dart';
+
+import 'constants.dart';
 
 Widget defaultButton({
   double width = double.infinity,
-  Color background = Colors.redAccent,
+  Color background = kPrimaryColor,
   bool isUpperCase = true,
   double radius = 3.0,
   @required Function function,
@@ -25,7 +26,7 @@ Widget defaultButton({
         borderRadius: BorderRadius.circular(
           radius,
         ),
-        color: background,
+        color: kPrimaryColor,
       ),
     );
 

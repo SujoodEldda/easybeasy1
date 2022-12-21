@@ -4,14 +4,19 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 
+import '../../shared/components/constants.dart';
+import '../login/screen_arguments.dart';
 import '../show_product/show_product.dart';
 
 class HomePage extends StatefulWidget
 {
-  final String email;
-  HomePage({
-  @required this.email,
-  });
+  static String routeName = "/home_page";
+
+  // final String email;
+  // HomePage({
+  // @required this.email,
+  // });
+
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -22,14 +27,15 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-   return Scaffold(
+    final args = ModalRoute.of(context).settings.arguments as ScreenArguments;
+    return Scaffold(
      drawer: NavDrawer(),
      appBar: AppBar(
-       backgroundColor: Colors.red,
+       backgroundColor: kPrimaryColor,
        centerTitle: true,
        title: Image(
          image: NetworkImage(
-             'https://raw.githubusercontent.com/SujoodEldda/EasyBeasy/main/Screenshot%20(6).png'),
+             'https://raw.githubusercontent.com/SujoodEldda/EasyBeasy/main/Screenshot%20(23).png'),
          width: 100,
          height: 60,
        ),
@@ -79,7 +85,7 @@ class _HomePageState extends State<HomePage> {
                      Icons.search,
                    ),
                    Text(
-                     'Hi ${widget.email}, what to search for you',
+                     'Hi ${args.email}, what to search for you',
 
                    ),
                  ],

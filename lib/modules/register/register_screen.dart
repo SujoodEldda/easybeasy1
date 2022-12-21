@@ -4,9 +4,12 @@ import 'package:flutter/material.dart';
 
 import '../../models/product/MongoDBModelProduct.dart';
 import '../../shared/components/components.dart';
+import '../../shared/components/constants.dart';
 import '../home/home_page.dart';
 import 'package:mongo_dart/mongo_dart.dart' as M;
 class RegisterScreen extends StatefulWidget{
+  static String routeName = "/register_screen";
+
   @override
   State<RegisterScreen> createState() => _RegisterScreenState();
 }
@@ -37,7 +40,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.redAccent,
+        backgroundColor: kPrimaryColor,
         title: Text(
           "Register for customers"
         ),

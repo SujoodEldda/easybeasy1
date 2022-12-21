@@ -1,5 +1,8 @@
 import 'package:easybeasy/modules/home/home_page.dart';
+import 'package:easybeasy/routes.dart';
+import 'package:easybeasy/shared/styles/theme.dart';
 import 'package:flutter/material.dart';
+import 'models/splash/splash_screen.dart';
 import 'modules/admin/admin_page.dart';
 
 import 'modules/login/login_screen.dart';
@@ -21,7 +24,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home:DetailsScreen(),
+      theme: theme(),
+      initialRoute: SplashScreen.routeName,
+      routes: routes,
     );
   }
 }
