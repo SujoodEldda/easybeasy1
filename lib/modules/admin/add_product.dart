@@ -5,7 +5,11 @@ import '../../shared/components/components.dart';
 import 'package:easybeasy/models/product//MongoDBModelProduct.dart';
 import 'package:easybeasy/mongodb.dart';
 
+import '../../shared/components/default_button.dart';
+
 class Add_Product_Screen extends StatefulWidget{
+
+  static String routeName = "/add_product";
 
   @override
   State<Add_Product_Screen> createState() => _Add_Product_ScreenState();
@@ -245,38 +249,69 @@ class _Add_Product_ScreenState extends State<Add_Product_Screen> {
               SizedBox(
                 height: 40.0,
               ),
-              defaultButton(
-                text: 'add the product',
-                function: ()
-                {
+              // defaultButton(
+              //   text: 'add the product',
+              //   function: ()
+              //   {
+              //
+              //     if(formKey.currentState.validate())
+              //     {
+              //       print(category.text);
+              //       print(details.text);
+              //       print(ingredients.text);
+              //       print(brand.text);
+              //       print(name.text);
+              //       print(country.text);
+              //       print(id.text);
+              //       print(price.text);
+              //       print(use.text);
+              //       print(volume.text);
+              //       print(place.text);
+              //       // print(photo.text);
+              //       _insertData(id.text,name.text,country.text,category.text,
+              //           ingredients.text,details.text,place.text,price.text,use.text,brand.text,volume.text);
+              //
+              //
+              //       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+              //           content: Text(
+              //               'successfully added !'
+              //           )
+              //       )
+              //       );
+              //
+              //     }
+              //
+              //   },
+              // ),
+              DefaultButton(
+                text: "ADD THE PRODUCT",
+                press: () {
+                      if(formKey.currentState.validate())
+                      {
+                        print(category.text);
+                        print(details.text);
+                        print(ingredients.text);
+                        print(brand.text);
+                        print(name.text);
+                        print(country.text);
+                        print(id.text);
+                        print(price.text);
+                        print(use.text);
+                        print(volume.text);
+                        print(place.text);
+                        // print(photo.text);
+                        _insertData(id.text,name.text,country.text,category.text,
+                            ingredients.text,details.text,place.text,price.text,use.text,brand.text,volume.text);
 
-                  if(formKey.currentState.validate())
-                  {
-                    print(category.text);
-                    print(details.text);
-                    print(ingredients.text);
-                    print(brand.text);
-                    print(name.text);
-                    print(country.text);
-                    print(id.text);
-                    print(price.text);
-                    print(use.text);
-                    print(volume.text);
-                    print(place.text);
-                    // print(photo.text);
-                    _insertData(id.text,name.text,country.text,category.text,
-                        ingredients.text,details.text,place.text,price.text,use.text,brand.text,volume.text);
 
-
-                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                        content: Text(
-                            'successfully added !'
+                        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                            content: Text(
+                                'successfully added !'
+                            )
                         )
-                    )
-                    );
+                        );
 
-                  }
-
+                      }
                 },
               ),
             ],
@@ -298,6 +333,7 @@ class _Add_Product_ScreenState extends State<Add_Product_Screen> {
   use.text = "";
   volume.text = "";
   place.text = "";
+  photo.text = "";
 
   }
   Future<void> _insertData(String id, String name,String country,String category,

@@ -1,3 +1,4 @@
+import 'package:easybeasy/modules/admin/admin_page.dart';
 import 'package:easybeasy/modules/home/home_page.dart';
 import 'package:easybeasy/modules/login/screen_arguments.dart';
 import 'package:easybeasy/shared/components/components.dart';
@@ -124,9 +125,10 @@ class _LoginScreenState extends State<LoginScreen>
                   DefaultButton(
                     text: "Login",
                     press: () {
-                      Navigator.pushNamed(context, HomePage.routeName,
-                      arguments: ScreenArguments(
-                      emailController.text));
+                      // Navigator.pushNamed(context, HomePage.routeName,
+                      // arguments: ScreenArguments(
+                      // emailController.text));
+                      Navigator.pushNamed(context, Admin_Screen.routeName);
                     },
                   ),
                   SizedBox(
@@ -164,7 +166,8 @@ class _LoginScreenState extends State<LoginScreen>
                           Navigator.pushNamed(context, HomePage.routeName,arguments: ScreenArguments(
                           emailController.text,
                           ),);
-                        },
+                          _clearAll();
+                          },
                         child: Text(
                           'Enter without identification',
                           style: TextStyle(
@@ -181,5 +184,11 @@ class _LoginScreenState extends State<LoginScreen>
         ),
       ),
     );
+  }
+  void _clearAll(){
+
+    emailController.text = "";
+    passwordController.text = "";
+
   }
 }

@@ -1,4 +1,8 @@
 
+import 'package:easybeasy/modules/admin/add_product.dart';
+import 'package:easybeasy/modules/admin/admin_page.dart';
+import 'package:easybeasy/modules/admin/edit_product.dart';
+import 'package:easybeasy/modules/admin/remove_product.dart';
 import 'package:easybeasy/modules/home/home_page.dart';
 import 'package:easybeasy/modules/login/login_screen.dart';
 import 'package:easybeasy/modules/register/register_screen.dart';
@@ -14,4 +18,8 @@ final Map<String, WidgetBuilder> routes = {
   LoginScreen.routeName: (context) =>LoginScreen(),
   HomePage.routeName: (context) => HomePage(),
   RegisterScreen.routeName: (context) => RegisterScreen(),
+  Admin_Screen.routeName: (context) => Admin_Screen(),
+  Edit_Product_Screen.routeName: (context) => Edit_Product_Screen(),
+  Remove_Product_Screen.routeName: (context) => Remove_Product_Screen(),
+  Add_Product_Screen.routeName: (context) => Add_Product_Screen(),
 };

@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 
 import '../../shared/components/components.dart';
 import '../../shared/components/constants.dart';
+import '../../shared/components/default_button.dart';
 
 class Edit_Product_Screen extends StatefulWidget{
+  static String routeName = "/edit_product";
   @override
   State<Edit_Product_Screen> createState() => _Edit_Product_ScreenState();
 }
@@ -21,7 +23,7 @@ class _Edit_Product_ScreenState extends State<Edit_Product_Screen> {
       crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SizedBox(
-            height: 120.0,
+            height: 100.0,
           ),
           defaultFormField(
             controller: id_edited,
@@ -38,32 +40,30 @@ class _Edit_Product_ScreenState extends State<Edit_Product_Screen> {
             },
           ),
 
-          Container(
-            child: DropdownButton<String>(
-              value: dropdownValue,
-              icon: const Icon(Icons.arrow_downward),
-              elevation: 100,
-              style: const TextStyle(color: Colors.redAccent),
-              underline: Container(
-                height: 4,
-                width: 70,
-                color: Colors.redAccent,
-              ),
-              onChanged: (String value) {
-                // This is called when the user selects an item.
-                setState(() {
-                  dropdownValue = value;
-                });
-              },
-              items: list_editing.map<DropdownMenuItem<String>>((String value) {
-                return DropdownMenuItem<String>(
-                  value: value,
-                  child: Text(
-                      value
-                  ),
-                );
-              }).toList(),
+          DropdownButton<String>(
+            value: dropdownValue,
+            icon: const Icon(Icons.arrow_downward),
+            elevation: 100,
+            style: const TextStyle(color: Colors.redAccent),
+            underline: Container(
+              height: 4,
+              width: 70,
+              color: Colors.redAccent,
             ),
+            onChanged: (String value) {
+              // This is called when the user selects an item.
+              setState(() {
+                dropdownValue = value;
+              });
+            },
+            items: list_editing.map<DropdownMenuItem<String>>((String value) {
+              return DropdownMenuItem<String>(
+                value: value,
+                child: Text(
+                    value
+                ),
+              );
+            }).toList(),
           ),
           SizedBox(
             height: 40.0,
@@ -84,23 +84,39 @@ class _Edit_Product_ScreenState extends State<Edit_Product_Screen> {
           SizedBox(
             height: 40.0,
           ),
-          defaultButton(
-            text: 'edit',
-            function: ()
-            {
+          // defaultButton(
+          //   text: 'edit',
+          //   function: ()
+          //   {
+          //
+          //     if(formKey.currentState.validate())
+          //     {
+          //       print(new_edit.text);
+          //
+          //       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+          //           content: Text(
+          //               'successfully edited !'
+          //           )
+          //       )
+          //       );
+          //     }
+          //
+          //   },
+          // ),
+          DefaultButton(
+            text: "EDIT THE VALUE",
+            press: () {
+                  if(formKey.currentState.validate())
+                  {
+                    print(new_edit.text);
 
-              if(formKey.currentState.validate())
-              {
-                print(new_edit.text);
-
-                ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                    content: Text(
-                        'successfully edited !'
+                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                        content: Text(
+                            'successfully edited !'
+                        )
                     )
-                )
-                );
-              }
-
+                    );
+                  }
             },
           ),
         ],

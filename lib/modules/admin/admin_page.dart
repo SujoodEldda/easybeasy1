@@ -3,6 +3,8 @@ import 'package:easybeasy/modules/admin/edit_product.dart';
 import 'package:easybeasy/modules/admin/remove_product.dart';
 import 'package:flutter/material.dart';
 
+import '../../shared/components/constants.dart';
+
 // 1. create database
 // 2. create tables
 // 3. open database
@@ -12,6 +14,8 @@ import 'package:flutter/material.dart';
 // 7. delete from database
 
 class Admin_Screen extends StatefulWidget {
+  static String routeName = "/admin_screen";
+
   @override
   State<Admin_Screen> createState() => _Admin_ScreenState();
 }
@@ -31,10 +35,11 @@ class _Admin_ScreenState extends State<Admin_Screen> {
   {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.redAccent,
+        backgroundColor: kPrimaryColor,
         title: Text(
-        'Admin Screen'
-      ),
+        'Admin Page'
+      )
+        
       ),
       body: screens[CurrentIndex1],
       bottomNavigationBar: BottomNavigationBar(
