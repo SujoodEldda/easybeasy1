@@ -17,50 +17,70 @@ class _Remove_Product_ScreenState extends State<Remove_Product_Screen> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        SizedBox(
-          height: 240.0,
-        ),
-        defaultFormField(
-          controller: id_deleted,
-          label: 'the product\'s id',
-          type: TextInputType.text,
-          validate: (String value)
-          {
-            if(value.isEmpty)
-            {
-              return 'the field must not be empty';
-            }
+    return Padding(
+      padding: const EdgeInsets.all(20.0),
+      child: SingleChildScrollView(
+        child: Form(
+          key: formKey,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children:
+            [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(
+                    height: 240.0,
+                  ),
+                  defaultFormField(
+                    controller: id_deleted,
+                    label: 'the product\'s id',
+                    type: TextInputType.text,
+                    validate: (String value)
+                    {
+                      if(value.isEmpty)
+                      {
+                        return 'the field must not be empty';
+                      }
 
-            return null;
-          },
-        ),
+                      return null;
+                    },
+                  ),
 
 
 
-        SizedBox(
-          height: 40.0,
-        ),
+                  SizedBox(
+                    height: 40.0,
+                  ),
 
-        DefaultButton(
-          text: "DELETE THE PRODUCT",
-          press: () {
-            if(formKey.currentState.validate())
-            {
-              print(id_deleted.text);
+                  DefaultButton(
+                    text: "DELETE THE PRODUCT",
+                    press: () {
+                      if(formKey.currentState.validate())
+                      {
+                        print(id_deleted.text);
 
-              ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                  content: Text(
-                      'successfully deleted !'
-                  )
+                        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                            content: Text(
+                                'successfully deleted !'
+                            )
+                        )
+                        );
+                      }
+                    },
+                  ),
+                ],
               )
-              );
-            }
-          },
+            ],
+          ),
         ),
-      ],
+      ),
     );
+  }
+  void _clearAll(){
+
+    id_deleted.text = "";
+
+
   }
 }

@@ -1,4 +1,5 @@
 import 'package:easybeasy/modules/home/side_menu.dart';
+import 'package:easybeasy/modules/login/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
@@ -398,7 +399,6 @@ class _HomePageState extends State<HomePage> {
       setState(() {
         getResult = qrCode;
       });
-      print("QRCode_Result:--");
       print(qrCode);
     } on PlatformException {
       getResult = 'Failed to scan QR Code.';

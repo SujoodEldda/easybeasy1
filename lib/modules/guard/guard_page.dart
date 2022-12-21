@@ -5,6 +5,8 @@ import 'package:easybeasy/modules/login/login_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../../shared/components/constants.dart';
+import 'check_payment.dart';
+import 'checked_payments.dart';
 
 // 1. create database
 // 2. create tables
@@ -14,21 +16,20 @@ import '../../shared/components/constants.dart';
 // 6. update in database
 // 7. delete from database
 
-class Admin_Screen extends StatefulWidget {
-  static String routeName = "/admin_screen";
+class GuardScreen extends StatefulWidget {
+  static String routeName = "/guard_screen";
 
   @override
-  State<Admin_Screen> createState() => _Admin_ScreenState();
+  State<GuardScreen> createState() => _GuardScreenState();
 }
 
-class _Admin_ScreenState extends State<Admin_Screen> {
+class _GuardScreenState extends State<GuardScreen> {
 
   int CurrentIndex1 = 0;
 
   List<Widget> screens = [
-    Add_Product_Screen(),
-    Remove_Product_Screen(),
-    Edit_Product_Screen(),
+    CheckPaymentScreen(),
+    CheckedPaymentsScreen(),
   ];
 
   @override
@@ -39,8 +40,8 @@ class _Admin_ScreenState extends State<Admin_Screen> {
         backgroundColor: kPrimaryColor,
         automaticallyImplyLeading: false,
         title: Text(
-        'Admin Page'
-      ),
+            'Guard Page'
+        ),
         actions: [
           IconButton(onPressed: (){
             Navigator.pushNamed(context, LoginScreen.routeName);
@@ -52,34 +53,29 @@ class _Admin_ScreenState extends State<Admin_Screen> {
       ),
       body: screens[CurrentIndex1],
       bottomNavigationBar: BottomNavigationBar(
-      type: BottomNavigationBarType.fixed,
-      currentIndex: CurrentIndex1,
-      onTap: (index) {
-        setState((){
-          CurrentIndex1 = index;
-        });
-      },
-      items: [
-        BottomNavigationBarItem(
-          icon: Icon(
-            Icons.add,
+        type: BottomNavigationBarType.fixed,
+        currentIndex: CurrentIndex1,
+        onTap: (index) {
+          setState((){
+            CurrentIndex1 = index;
+          });
+        },
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.radio_button_unchecked,
+            ),
+            label: 'check payments',
           ),
-          label: 'Add product',
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(
-            Icons.remove_circle,
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.radio_button_checked,
+            ),
+            label: 'checked payments',
           ),
-          label: 'Remove item',
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(
-            Icons.edit_sharp,
-          ),
-          label: 'Edit item',
-        ),
-      ],
-    ),
+
+        ],
+      ),
 
 
     );

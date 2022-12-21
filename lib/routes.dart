@@ -7,8 +7,11 @@ import 'package:easybeasy/modules/home/home_page.dart';
 import 'package:easybeasy/modules/login/login_screen.dart';
 import 'package:easybeasy/modules/register/register_screen.dart';
 import 'package:flutter/widgets.dart';
-
 import 'models/splash/splash_screen.dart';
+import 'modules/guard/check_payment.dart';
+import 'modules/guard/checked_payments.dart';
+import 'modules/guard/guard_page.dart';
+import 'modules/guard/guard_screen.dart';
 
 
 // We use name route
@@ -22,4 +25,9 @@ final Map<String, WidgetBuilder> routes = {
   Edit_Product_Screen.routeName: (context) => Edit_Product_Screen(),
   Remove_Product_Screen.routeName: (context) => Remove_Product_Screen(),
   Add_Product_Screen.routeName: (context) => Add_Product_Screen(),
+  QRCreatePage.routeName: (context) => QRCreatePage(),
+  GuardScreen.routeName: (context) => GuardScreen(),
+  CheckedPaymentsScreen.routeName: (context) => CheckedPaymentsScreen(),
+  CheckPaymentScreen.routeName: (context) => CheckPaymentScreen(),
+
 };

@@ -1,3 +1,4 @@
+import 'package:easybeasy/models/splash/splash_screen.dart';
 import 'package:easybeasy/modules/admin/admin_page.dart';
 import 'package:easybeasy/modules/home/home_page.dart';
 import 'package:easybeasy/modules/login/screen_arguments.dart';
@@ -35,7 +36,13 @@ class _LoginScreenState extends State<LoginScreen>
     return Scaffold(
       appBar: AppBar(
         backgroundColor: kPrimaryColor,
+        leading: BackButton(
+          onPressed:(){
+            Navigator.pushNamed(context, SplashScreen.routeName);
+          },
+        ),
       ),
+
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Center(
@@ -128,7 +135,10 @@ class _LoginScreenState extends State<LoginScreen>
                       // Navigator.pushNamed(context, HomePage.routeName,
                       // arguments: ScreenArguments(
                       // emailController.text));
+
                       Navigator.pushNamed(context, Admin_Screen.routeName);
+                      emailController.text = "";
+                      passwordController.text = "";
                     },
                   ),
                   SizedBox(
@@ -144,6 +154,8 @@ class _LoginScreenState extends State<LoginScreen>
                       TextButton(
                         onPressed: () {
                           Navigator.pushNamed(context, RegisterScreen.routeName);
+                          emailController.text = "";
+                          passwordController.text = "";
                         },
                         child: Text(
                           'Register Now',
@@ -167,6 +179,8 @@ class _LoginScreenState extends State<LoginScreen>
                           emailController.text,
                           ),);
                           _clearAll();
+                          emailController.text = "";
+                          passwordController.text = "";
                           },
                         child: Text(
                           'Enter without identification',
