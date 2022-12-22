@@ -1,6 +1,5 @@
 import 'package:easybeasy/shared/components/size_config.dart';
 import 'package:flutter/material.dart';
-
 import 'constants.dart';
 
 

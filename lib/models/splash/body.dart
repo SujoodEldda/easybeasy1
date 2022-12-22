@@ -1,12 +1,9 @@
 import 'package:easybeasy/models/splash/splash_content.dart';
 import 'package:flutter/material.dart';
-
-import '../../modules/guard/guard_page.dart';
 import '../../modules/login/login_screen.dart';
 import '../../shared/components/constants.dart';
 import '../../shared/components/default_button.dart';
 import '../../shared/components/size_config.dart';
-import '../../modules/guard/guard_screen.dart';
 
 
 

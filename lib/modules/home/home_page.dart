@@ -1,23 +1,14 @@
 import 'package:easybeasy/modules/home/side_menu.dart';
-import 'package:easybeasy/modules/login/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
-
 import '../../shared/components/constants.dart';
 import '../login/screen_arguments.dart';
-import '../show_product/show_product.dart';
 
 class HomePage extends StatefulWidget
 {
   static String routeName = "/home_page";
-
-  // final String email;
-  // HomePage({
-  // @required this.email,
-  // });
-
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -34,11 +25,26 @@ class _HomePageState extends State<HomePage> {
      appBar: AppBar(
        backgroundColor: kPrimaryColor,
        centerTitle: true,
-       title: Image(
-         image: NetworkImage(
-             'https://raw.githubusercontent.com/SujoodEldda/EasyBeasy/main/Screenshot%20(23).png'),
-         width: 100,
-         height: 60,
+       title:Text(
+         'EASY BEASY',
+         style: TextStyle(
+           color: Colors.white,
+           fontSize: 25.0,
+           fontWeight: FontWeight.bold,
+           shadows: <Shadow>[
+             Shadow(
+               offset: Offset(10.0, 10.0),
+               blurRadius: 3.0,
+               color: Color.fromARGB(22, 0, 0, 0),
+             ),
+             Shadow(
+               offset: Offset(10.0, 10.0),
+               blurRadius: 8.0,
+               color: Color.fromARGB(25, 0, 0, 255),
+             ),
+           ],
+
+         ),
        ),
 
      ),
@@ -65,19 +71,14 @@ class _HomePageState extends State<HomePage> {
                      onPressed: () {
                        scanQRCode();
                        print('hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh'+getResult);
-                       // Navigator.push(
-                       //   context,
-                       //   MaterialPageRoute(
-                       //     builder: (context) => ShowProduct(
-                       //       id:getResult,
-                       //     ),
-                       //   ),
-                       // );
                      },
+
                      icon: Icon(
                        Icons.qr_code_2,
                      ),
                    ),
+
+
                    // Text(getResult),
                    SizedBox(
                      width: 3.0,
@@ -94,7 +95,11 @@ class _HomePageState extends State<HomePage> {
                ),
              ),
              SizedBox(
-               height: 50.0,
+               height: 20.0,
+             ),
+             Text(getResult),
+             SizedBox(
+               height: 20.0,
              ),
              Row(
                  mainAxisAlignment: MainAxisAlignment.start ,

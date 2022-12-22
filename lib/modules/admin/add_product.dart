@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mongo_dart/mongo_dart.dart' as M;
 import '../../models/user/MongoDBModelUser.dart';
 import '../../shared/components/components.dart';
-import 'package:easybeasy/models/product//MongoDBModelProduct.dart';
 import 'package:easybeasy/mongodb.dart';
-
 import '../../shared/components/default_button.dart';
 
 class Add_Product_Screen extends StatefulWidget{
@@ -249,40 +247,7 @@ class _Add_Product_ScreenState extends State<Add_Product_Screen> {
               SizedBox(
                 height: 40.0,
               ),
-              // defaultButton(
-              //   text: 'add the product',
-              //   function: ()
-              //   {
-              //
-              //     if(formKey.currentState.validate())
-              //     {
-              //       print(category.text);
-              //       print(details.text);
-              //       print(ingredients.text);
-              //       print(brand.text);
-              //       print(name.text);
-              //       print(country.text);
-              //       print(id.text);
-              //       print(price.text);
-              //       print(use.text);
-              //       print(volume.text);
-              //       print(place.text);
-              //       // print(photo.text);
-              //       _insertData(id.text,name.text,country.text,category.text,
-              //           ingredients.text,details.text,place.text,price.text,use.text,brand.text,volume.text);
-              //
-              //
-              //       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-              //           content: Text(
-              //               'successfully added !'
-              //           )
-              //       )
-              //       );
-              //
-              //     }
-              //
-              //   },
-              // ),
+
               DefaultButton(
                 text: "ADD THE PRODUCT",
                 press: () {
@@ -353,6 +318,7 @@ class _Add_Product_ScreenState extends State<Add_Product_Screen> {
       brand:brand,
 
     );
+    await MongoDatabase.connect();
     var result = await MongoDatabase.insert(data);
     _clearAll();
   }

@@ -5,7 +5,6 @@ const MONGO_URL = "mongodb+srv://sujood:1234@cluster0.fbuw1jd.mongodb.net/easy?r
 const COLLECTIO_NAME_USER = "users";
 const COLLECTIO_NAME_PRODUCT = "products";
 const COLLECTIO_NAME_CART = "carts";
-
 const List<String> list_editing = <String>['name', 'country', 'category', 'ingredients','details', 'place', 'volume', 'price', 'use', 'brand'];
 const kPrimaryColor = Color(0xFFFF7643);
 const kPrimaryLightColor = Color(0xFFFFECDF);

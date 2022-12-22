@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-
 import '../../shared/components/components.dart';
 import '../../shared/components/constants.dart';
 import '../../shared/components/default_button.dart';
+import 'package:mongo_dart/mongo_dart.dart' as M;
+import 'package:easybeasy/mongodb.dart';
 
 class Edit_Product_Screen extends StatefulWidget{
   static String routeName = "/edit_product";
@@ -95,32 +96,13 @@ class _Edit_Product_ScreenState extends State<Edit_Product_Screen> {
                 SizedBox(
                   height: 40.0,
                 ),
-                // defaultButton(
-                //   text: 'edit',
-                //   function: ()
-                //   {
-                //
-                //     if(formKey.currentState.validate())
-                //     {
-                //       print(new_edit.text);
-                //
-                //       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                //           content: Text(
-                //               'successfully edited !'
-                //           )
-                //       )
-                //       );
-                //     }
-                //
-                //   },
-                // ),
                 DefaultButton(
                   text: "EDIT THE VALUE",
                   press: () {
                     if(formKey.currentState.validate())
                     {
                       print(new_edit.text);
-
+                      _updatetData(id_edited.text,dropdownValue, new_edit.text);
                       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                           content: Text(
                               'successfully edited !'
@@ -143,7 +125,15 @@ class _Edit_Product_ScreenState extends State<Edit_Product_Screen> {
 
     new_edit.text = "";
     id_edited.text = "";
+    dropdownValue  = list_editing.first;;
 
 
+  }
+  Future<void> _updatetData(String id, String name,String value) async{
+    var _id = M.ObjectId;
+
+    await MongoDatabase.connect();
+    var result = await MongoDatabase.update(id, name,value);
+    _clearAll();
   }
 }

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-
 import '../../shared/components/components.dart';
 import '../../shared/components/default_button.dart';
+import 'package:mongo_dart/mongo_dart.dart' as M;
+import 'package:easybeasy/mongodb.dart';
 
 class Remove_Product_Screen extends StatefulWidget{
   static String routeName = "/remove_product";
@@ -46,9 +47,6 @@ class _Remove_Product_ScreenState extends State<Remove_Product_Screen> {
                       return null;
                     },
                   ),
-
-
-
                   SizedBox(
                     height: 40.0,
                   ),
@@ -59,6 +57,7 @@ class _Remove_Product_ScreenState extends State<Remove_Product_Screen> {
                       if(formKey.currentState.validate())
                       {
                         print(id_deleted.text);
+                        _deletetData(id_deleted.text);
 
                         ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                             content: Text(
@@ -82,5 +81,13 @@ class _Remove_Product_ScreenState extends State<Remove_Product_Screen> {
     id_deleted.text = "";
 
 
+  }
+
+  Future<void> _deletetData(String id) async{
+    var _id = M.ObjectId;
+
+    await MongoDatabase.connect();
+    var result = await MongoDatabase.delete(id);
+    _clearAll();
   }
 }

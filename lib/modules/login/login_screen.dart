@@ -6,14 +6,9 @@ import 'package:easybeasy/shared/components/components.dart';
 import 'package:flutter/material.dart';
 import '../../shared/components/constants.dart';
 import '../../shared/components/default_button.dart';
+import '../guard/guard_page.dart';
 import '../register/register_screen.dart';
 
-// reusable components
-
-// 1. timing
-// 2. refactor
-// 3. quality
-// 4. clean code
 
 class LoginScreen extends StatefulWidget
 {
@@ -110,33 +105,20 @@ class _LoginScreenState extends State<LoginScreen>
                   SizedBox(
                     height: 20.0,
                   ),
-                  // defaultButton(
-                  //   text: 'login',
-                  //   function: ()
-                  //   {
-                  //     if(formKey.currentState.validate())
-                  //     {
-                  //       print(emailController.text);
-                  //       print(passwordController.text);
-                  //     }
-                  //     Navigator.push(
-                  //       context,
-                  //       MaterialPageRoute(
-                  //         builder: (context) => HomePage(
-                  //           email:emailController.text,
-                  //         ),
-                  //       ),
-                  //     );
-                  //   },
-                  // ),
                   DefaultButton(
                     text: "Login",
                     press: () {
-                      // Navigator.pushNamed(context, HomePage.routeName,
-                      // arguments: ScreenArguments(
-                      // emailController.text));
+                      if(emailController.text == 'arin@gmail.com') {
+                        Navigator.pushNamed(context, HomePage.routeName,
+                            arguments: ScreenArguments(emailController.text));
+                      }if(emailController.text == 'admin') {
+                        Navigator.pushNamed(context, Admin_Screen.routeName);
 
-                      Navigator.pushNamed(context, Admin_Screen.routeName);
+                      }if(emailController.text == 'guard') {
+                        Navigator.pushNamed(context, GuardScreen.routeName);
+
+                      }
+
                       emailController.text = "";
                       passwordController.text = "";
                     },
@@ -179,8 +161,6 @@ class _LoginScreenState extends State<LoginScreen>
                           emailController.text,
                           ),);
                           _clearAll();
-                          emailController.text = "";
-                          passwordController.text = "";
                           },
                         child: Text(
                           'Enter without identification',

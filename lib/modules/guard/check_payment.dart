@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
-import 'package:mongo_dart/mongo_dart.dart' as M;
-import '../../models/user/MongoDBModelUser.dart';
-import '../../shared/components/components.dart';
-import 'package:easybeasy/models/product//MongoDBModelProduct.dart';
-import 'package:easybeasy/mongodb.dart';
+
 
 import '../../shared/components/default_button.dart';
 
@@ -35,14 +31,6 @@ class _CheckPaymentScreenState extends State<CheckPaymentScreen> {
               scanQRCode();
               print('hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh'+getResult);
 
-              // Navigator.push(
-              //   context,
-              //   MaterialPageRoute(
-              //     builder: (context) => ShowProduct(
-              //       id:getResult,
-              //     ),
-              //   ),
-              // );
             },
           ),
         ),

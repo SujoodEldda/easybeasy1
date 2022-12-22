@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 
-
-import '../../shared/components/default_button.dart';
-
 class CheckedPaymentsScreen extends StatefulWidget{
 
   static String routeName = "/checked_payments";

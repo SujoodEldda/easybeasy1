@@ -1,13 +1,11 @@
-import 'package:easybeasy/models/user/MongoDBModelUser.dart';
 import 'package:easybeasy/mongodb.dart';
 import 'package:flutter/material.dart';
-
 import '../../models/product/MongoDBModelProduct.dart';
 import '../../shared/components/components.dart';
 import '../../shared/components/constants.dart';
 import '../../shared/components/default_button.dart';
-import '../home/home_page.dart';
 import 'package:mongo_dart/mongo_dart.dart' as M;
+
 class RegisterScreen extends StatefulWidget{
   static String routeName = "/register_screen";
 
@@ -199,31 +197,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 SizedBox(
                   height: 40.0,
                 ),
-                // defaultButton(
-                //   text: 'register',
-                //   function: ()
-                //   {
-                //
-                //     if(formKey.currentState.validate())
-                //     {
-                //       print(email.text);
-                //       print(password.text);
-                //       print(passwordvar.text);
-                //       print(lastname.text);
-                //       print(firstname.text);
-                //       print(id.text);
-                //       print(phone.text);
-                //       _insertData(id.text,email.text,firstname.text,lastname.text,password.text,phone.text);
-                //       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                //           content: Text(
-                //               'successfully created !'
-                //           )
-                //       )
-                //       );
-                //     }
-                //
-                //   },
-                // ),
+
                 DefaultButton(
                   text: "REGISTER",
                   press: () {
@@ -276,6 +250,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
       phone: phone,
 
     );
+    await MongoDatabase.connect();
+
     var result = await MongoDatabase.insert1(data);
     _clearAll();
   }
